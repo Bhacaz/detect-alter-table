@@ -1,0 +1,11 @@
+name: Detect Alter table
+on: [pull_request]
+jobs:
+  detect_alter_table:
+    runs-on: ubuntu-latest
+    name: Detect Alter table
+    steps:
+      - name: Setup Ruby
+        uses: Bhacaz/detect-alter-table@main
+        with:
+          gh-token: ${{ secrets.ACCESS_TOKEN }}
