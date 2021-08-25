@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 const token = core.getInput("gh-token", { required: true });
-const errorMessage = core.getInput("message-error", { required: false });
+const errorMessage = core.getInput("error-message", { required: false });
 const client = github.getOctokit(token);
 
 // https://api.rubyonrails.org/v5.2.1/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-rename_table_indexes
