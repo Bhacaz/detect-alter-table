@@ -6,7 +6,7 @@ GitHub Action to analyze Rails migrations files content to detect presence metho
 
 | Name | Description | Required | Default |
 | ---- | --- | --- | --- |
-| `gh-token` | A Github Personal Acsess Token | true | `null` |
+| `gh-token` | A Github Personal Acsess Token | true | N/A |
 | `error-message` | A custom error message when the action detect an `ALTER TABLE` method | false | `ALTER TABLE method found.`
 
 ## Example of workflow
