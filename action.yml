@@ -4,6 +4,10 @@ author: 'Bhacaz'
 inputs:
   gh-token:
     description: 'The GITHUB_TOKEN secret'
+  error-message:
+    description: 'Custom error message.'
+    required: false
+    default: 'ALTER TABLE method found.'
 runs:
   using: 'node12'
   main: 'index.js'
