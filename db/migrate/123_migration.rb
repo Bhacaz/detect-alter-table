@@ -1,7 +1,5 @@
 class Migration
   def change
-    change_table :test do
-      t.string :new_column
-    end
+    remove_column :test, :column
   end
 end
