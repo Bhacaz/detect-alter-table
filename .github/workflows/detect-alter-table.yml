@@ -1,5 +1,8 @@
 name: Detect Alter table
-on: [pull_request]
+on:
+  pull_request:
+    branches:
+        - main
 jobs:
   detect_alter_table:
     runs-on: ubuntu-latest
