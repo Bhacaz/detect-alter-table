@@ -51,8 +51,7 @@ async function detectAlterTable() {
     filesPath.find(file => {
         fetchContent(client, file).then(content => {
             if(content.includes('change_table')) {
-                core.error(`Alter table method found in ${file}`);
-                core.setFailed(`ALTER TABLE detected.`);
+                core.setFailed(`ALTER TABLE method found in ${file}`);
             }
         })
     })
