@@ -24,9 +24,9 @@ async function getChangedFiles(client, prNumber) {
     let changedFiles = listFilesResponse.map((f) => f.filename);
     changedFiles = changedFiles.filter(file => file.includes('db/migrate'))
 
-    core.debug("found changed files:");
+    core.info("found changed files:");
     for (const file of changedFiles) {
-        core.debug("  " + file);
+        core.info("  " + file);
     }
 
     return changedFiles;
@@ -51,6 +51,7 @@ async function detectAlterTable() {
     filesPath.find(file => {
         fetchContent(client, file).then(content => {
             if(content.includes('change_table')) {
+                core.error(`Alter table method found in ${file}`);
                 core.setFailed(`ALTER TABLE detected.`);
             }
         })
