@@ -74,8 +74,7 @@ async function detectAlterTable() {
         fetchContent(client, file).then(content => {
             alterTableMethods.forEach(method => {
                 if(content.includes(method)) {
-                    core.error(`Alter table method found in ${file}`);
-                core.setFailed(`${errorMessage}: '${method}' in '${file}'`);
+                    core.setFailed(`${errorMessage}: '${method}' in '${file}'`);
                 }
             })
         })
