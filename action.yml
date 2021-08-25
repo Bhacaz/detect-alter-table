@@ -1,0 +1,9 @@
+name: Detect Alter Table
+description: 'Detect Alter Table methods in Rails migrations'
+author: 'Bhacaz'
+inputs:
+  gh-token:
+    description: 'The GITHUB_TOKEN secret'
+runs:
+  using: 'node12'
+  main: 'index.js'

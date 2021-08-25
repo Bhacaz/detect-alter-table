@@ -21,7 +21,8 @@ async function getChangedFiles(client, prNumber) {
     });
 
     const listFilesResponse = await client.paginate(listFilesOptions);
-    const changedFiles = listFilesResponse.map((f) => f.filename);
+    let changedFiles = listFilesResponse.map((f) => f.filename);
+    changedFiles = changedFiles.filter(file => file.includes('db/migrate'))
 
     core.debug("found changed files:");
     for (const file of changedFiles) {
@@ -46,12 +47,10 @@ async function fetchContent(
 }
 
 async function detectAlterTable() {
-    let filesPath = await getChangedFiles(client, getPrNumber())
-    filesPath = filesPath.filter(file => file.includes('db/migrate'))
+    const filesPath = await getChangedFiles(client, getPrNumber())
     filesPath.find(file => {
         fetchContent(client, file).then(content => {
             if(content.includes('change_table')) {
-                process.exit(1);
                 core.setFailed(`ALTER TABLE detected.`);
             }
         })
