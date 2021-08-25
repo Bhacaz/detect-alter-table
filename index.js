@@ -2,6 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 const token = core.getInput("gh-token", { required: true });
+const errorMessage = core.getInput("message-error", { required: false });
 const client = github.getOctokit(token);
 
 // https://api.rubyonrails.org/v5.2.1/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-rename_table_indexes
@@ -74,7 +75,7 @@ async function detectAlterTable() {
             alterTableMethods.forEach(method => {
                 if(content.includes(method)) {
                     core.error(`Alter table method found in ${file}`);
-                core.setFailed(`ALTER TABLE method ('${method}') found in '${file}'`);
+                core.setFailed(`${errorMessage}: '${method}' in '${file}'`);
                 }
             })
         })
