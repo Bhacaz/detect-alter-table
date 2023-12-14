@@ -24,7 +24,7 @@ jobs:
     name: Detect presence of alter table
     steps:
       - name: Detect presence of alter table
-        uses: Bhacaz/detect-alter-table@main
+        uses: petalmd/detect-alter-table@main
         with:
           gh-token: ${{ secrets.GH_TOKEN }}
           error-message: Migration should target the migration branch.

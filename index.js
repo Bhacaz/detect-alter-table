@@ -47,7 +47,9 @@ async function getChangedFiles(client, prNumber) {
 
     const listFilesResponse = await client.paginate(listFilesOptions);
     let changedFiles = listFilesResponse.map((f) => f.filename);
-    changedFiles = changedFiles.filter(file => file.includes('db/migrate'))
+    
+    // "db/migration" or "db/other_db_migration"
+    changedFiles = changedFiles.filter(file => file.match(/db\/.*migrate\//))
 
     core.notice(`Migration files:\n` + changedFiles.join('\n'));
 
